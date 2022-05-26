@@ -7,8 +7,6 @@ session_start();
 $user_id = $_SESSION['user_id'];
 check_id(1, $user_id, $conn);
 
-echo $user_id;
-
 try {
     $sql = "
     SELECT * FROM `user_main_tbl`
@@ -33,21 +31,22 @@ foreach ($rows as $data1) {
     $arr1 = $data1;
 }
 
+echo "<h1>Edit Personal Information</h1>
+        $user_id<br>";
 _userheader("Test");
 ?>
 <!-- Style Sheet Link -->
 <link rel="stylesheet" href="css/style-user.css">
 
-<h1>Edit Personal Information</h1>
-<a href="uindex.php">UWU go back</a>
+<br><a href="uindex.php">UWU go back</a>
 <form action="uconfig.php?user_id=<?= $user_id ?>" method="get">
     <fieldset>
-        <label for="user_name">Surname</label>
-        <input type="text" name="user_name" id="user_name" value="<?= (isset($arr1['psl_user_sname'])) ? $arr1['psl_user_sname'] : '' ?>">
+        <label for="user_sname">Surname</label>
+        <input type="text" name="psl[psl_user_sname]" id="user_sname" value="<?= (isset($arr1['psl_user_sname'])) ? $arr1['psl_user_sname'] : '' ?>">
         <label for="user_fname">First Name</label>
-        <input type="text" name="user_fname" id="user_fname" value="<?= (isset($arr1['psl_user_fname'])) ?  $arr1['psl_user_fname'] : '' ?>">
-        <label for="midName">Middle Name</label>
-        <input type="text" name="user_mname" id="midName" value="<?= (isset($arr1['psl_user_mname'])) ?  $arr1['psl_user_mname'] : '' ?>">
+        <input type="text" name="psl[psl_user_fname]" id="user_fname" value="<?= (isset($arr1['psl_user_fname'])) ?  $arr1['psl_user_fname'] : '' ?>">
+        <label for="user_mname">Middle Name</label>
+        <input type="text" name="user_mname" id="user_mname" value="<?= (isset($arr1['psl_user_mname'])) ?  $arr1['psl_user_mname'] : '' ?>">
         <label for="user_bdate">Date of Birth</label>
         <input type="date" name="user_bdate" id="user_bdate" value="<?= (isset($arr1['psl_user_bdate'])) ?  $arr1['psl_user_bdate'] : '' ?>">
         <label for="plcBirt">Place of Birth</label>
@@ -70,9 +69,9 @@ _userheader("Test");
         <label for="sepcivil">Separated</label>
         <br><br>
         <label for="weight">Weight(kg) </label>
-        <input type="number" name="user_weight" id="weight" value="<?= (isset($arr1['psl_user_weight'])) ?  $arr1['psl_user_weight'] : '' ?>">
+        <input type="text" name="user_weight" id="weight" value="<?= (isset($arr1['psl_user_weight'])) ?  $arr1['psl_user_weight'] : '' ?>">
         <label for="height">Height(m) </label>
-        <input type="number" name="user_height" id="height" value="<?= (isset($arr1['psl_user_height'])) ?  $arr1['psl_user_height'] : '' ?>">
+        <input type="text" name="user_height" id="height" value="<?= (isset($arr1['psl_user_height'])) ?  $arr1['psl_user_height'] : '' ?>">
         <label for="blood">Blood Type </label>
         <input type="text" name="user_blood" id="blood" value="<?= (isset($arr1['psl_user_blood'])) ?  $arr1['psl_user_blood'] : '' ?>">
         <br><br>
@@ -92,6 +91,7 @@ _userheader("Test");
         <span>Citizenship<br>(If holder of dual citizenship, please indicate the details.)</span>
         <input type="radio" name="user_ctzn" id="ctzn_filipino" <?= $arr1['psl_user_ctzn'] == "filipino" ? "checked" : "" ?> value="filipino">
         <label for="ctzn_filipino">Filipino</label>
+        <br>
         <span>Dual Citizenship</span>
         <input type="radio" name="user_ctzn" id="ctzn_dual_birth" <?= $arr1['psl_user_ctzn'] == "dualBirth" ? "checked" : "" ?> value="dualBirth">
         <label for="ctzn_dual_birth">by birth</label>

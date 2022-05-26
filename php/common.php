@@ -86,7 +86,7 @@ if (isset($_POST['login_btn'])) {
     }
 
     $_SESSION['user_id'] = $result;
-    header("Location: ../page_user/index.php?success=Welcome back!");
+    header("Location: ../page_user/uindex.php?success=Welcome back!");
 }
 
 //  NOTE: FINISH ADMIN AFTER USER!!! login admin

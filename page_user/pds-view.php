@@ -129,7 +129,7 @@ _userheader("Test");
       <button type="submit">Test</button>
   </fieldset>
   <fieldset disabled="disabled">
-      <span>II. Family background <a href="http://" target="_blank" rel="noopener noreferrer">Edit</a></span>
+      <span>II. Family background <a href="uedit2.php?user_id=<?=$arr1['user_id']?>" target="_blank" rel="noopener noreferrer">Edit</a></span>
       <br><br>
       <label for="spous_surname">22. Spouse's Surname </label>
       <input type="text" name="spous_surname" id="spous_surname" value="<?= (isset($arr1['fmly_spous_sname'])) ?  $arr1['fmly_spous_sname'] : '' ?>">
@@ -167,7 +167,7 @@ _userheader("Test");
       <input type="text" name="mname_mthr" id="mname_mthr" value="<?= (isset($arr1['fmly_user_mname_mthr'])) ?  $arr1['fmly_user_mname_mthr'] : '' ?>">
   </fieldset>
   <fieldset disabled="disabled">
-      <span>III. Educational Background <a href="http://" target="_blank" rel="noopener noreferrer">Edit</a></span>
+      <span>III. Educational Background <a href="uedit3.php?user_id=<?=$arr1['user_id']?>" target="_blank" rel="noopener noreferrer">Edit</a></span>
       <table class="zui-table" width="100%">
           <thead>
               <tr>
@@ -210,7 +210,7 @@ _userheader("Test");
       </table>
   </fieldset>
   <fieldset disabled="disabled">
-      <span>IV. Civil Service Elegibility <a href="http://" target="_blank" rel="noopener noreferrer">Edit</a></span>
+      <span>IV. Civil Service Elegibility <a href="uedit4.php?user_id=<?=$arr1['user_id']?>" target="_blank" rel="noopener noreferrer">Edit</a></span>
       <table class="zui-table" width="100%">
           <thead>
               <tr>
@@ -231,7 +231,7 @@ _userheader("Test");
       </table>
   </fieldset>
   <fieldset disabled="disabled">
-      <span>V. WORK EXPERIENCE <a href="http://" target="_blank" rel="noopener noreferrer">Edit</a> <br></span>
+      <span>V. WORK EXPERIENCE <a href="uedit5.php?user_id=<?=$arr1['user_id']?>" target="_blank" rel="noopener noreferrer">Edit</a> <br></span>
       (Include private employment. Start from your recent work)Description of duties should be indicated in the attached Works Experience sheet.
       <table class="zui-table" width="100%">
           <thead>
@@ -262,7 +262,7 @@ _userheader("Test");
 
   <fieldset disabled="disabled">
       <span>VI. VOLUNTARY WORK OR INVOLVEMETN IN CIVIC/
-          NON-GOVERNMENT/PEOPLE/VOLUNTARY ORGANIZATIONS <a href="http://" target="_blank" rel="noopener noreferrer">Edit</a> </span>
+          NON-GOVERNMENT/PEOPLE/VOLUNTARY ORGANIZATIONS <a href="uedit6.php?user_id=<?=$arr1['user_id']?>" target="_blank" rel="noopener noreferrer">Edit</a> </span>
       <table class="zui-table" width="100%">
           <thead>
               <tr>
@@ -285,7 +285,7 @@ _userheader("Test");
 
   <fieldset disabled="disabled">
       <span> VII. LEARNING AND DEVELOPMENT(L&D)INTERVENTIONS/TRAINING PROGRAMS ATTENDED<br>
-          (Start from the most L&D/training program and include only the relevant L& D/training takrn for the last five(5)years for Division Chief/Executive/Managerial position) <a href="http://" target="_blank" rel="noopener noreferrer"></a> </span>
+          (Start from the most L&D/training program and include only the relevant L& D/training takrn for the last five(5)years for Division Chief/Executive/Managerial position) <a href="uedit7.php?user_id=<?=$arr1['user_id']?>" target="_blank" rel="noopener noreferrer"></a> </span>
       <table class="zui-table" width="100%">
           <thead>
               <tr>
@@ -310,7 +310,7 @@ _userheader("Test");
   </fieldset>
 
   <fieldset disabled="disabled">
-      <span>VIII. OTHER INFORMATION <a href="http://" target="_blank" rel="noopener noreferrer">Edit</a> </span>
+      <span>VIII. OTHER INFORMATION <a href="uedit8.php?user_id=<?=$arr1['user_id']?>" target="_blank" rel="noopener noreferrer">Edit</a> </span>
       <table class="zui-table" width="100%">
           <thead>
               <tr>
@@ -330,7 +330,7 @@ _userheader("Test");
   </fieldset>
 
   <fieldset disabled="disabled">
-      <a href="http://" target="_blank" rel="noopener noreferrer">Edit</a>
+      <a href="uedit9.php?user_id=<?=$arr1['user_id']?>" target="_blank" rel="noopener noreferrer">Edit</a>
       <span>
           34. Are you related by consaguinity or affinity to the appointing or recommending authority, or to chief of bureau or office or to the person who has immediate supervision over you in the Bureau or Department where you will be apppointed,
           <br>
@@ -387,7 +387,7 @@ _userheader("Test");
   </fieldset>
 
   <fieldset disabled="disabled">
-      <a href="http://" target="_blank" rel="noopener noreferrer">Edit</a>
+      <a href="uedit10.php?user_id=<?=$arr1['user_id']?>" target="_blank" rel="noopener noreferrer">Edit</a>
       41. REFERENCES (Person not related by consanguinity or affinity to applicant /appointee)
       <table class="zui-table" width="100%">
           <thead>

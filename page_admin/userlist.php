@@ -36,7 +36,7 @@ _headerAdmin("User List");
             <th>No.</th>
             <th>Unique ID</th>
             <th>Name</th>
-            <th colspan="3">Options</th>
+            <th colspan="4">Options</th>
         </tr>
     </thead>
     <tbody>
@@ -54,6 +54,7 @@ _headerAdmin("User List");
                         "<td><a href='#?user_id=$user_id'>Edit</a></td>" .
                         "<td><a href='#?user_id=$user_id'>Print</a></td>" .
                         "<td><a href='#?user_id=$user_id'>Delete</a></td>" .
+                        "<td><a href='#?user_id=$user_id'>Verify</a></td>" .
                         "</tr>";
             }
         } else {
