@@ -1,7 +1,3 @@
-BACKEND CODING SUSPENDED TILL MONDAY, HAVE A NICE WEEKEND!
-
-strikethrough 
-
 <strong>To-do List</strong>
 
 1. User
