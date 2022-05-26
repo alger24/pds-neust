@@ -8,8 +8,8 @@ strikethrough
     - [x] CRUD
     - [x] Homepage
     - [ ] Personal Data Sheet CRUD
-        - Viewing 
-        - Personal Information [![label](https://img.shields.io/badge/status-done-blue)](#)
+        - Viewing [![label](https://img.shields.io/badge/status-in--progress-orange)](#)
+        - Personal Information [![label](https://img.shields.io/badge/status-50%25%20done-blue)](#)
         - Family Bacground [![label](https://img.shields.io/badge/status-halted-red)](#)
         - Educational Background [![label](https://img.shields.io/badge/status-halted-red)](#)
         - Civil Service Eligibility [![label](https://img.shields.io/badge/status-halted-red)](#)
