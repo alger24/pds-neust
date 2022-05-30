@@ -1,5 +1,6 @@
 <?php
 require 'php/func.php';
+require 'idry.php';
 session_start();
 
 _headerIndex("NEUST PORTAL - LOGIN");
