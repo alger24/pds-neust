@@ -1,8 +1,8 @@
 <strong>To-do List</strong>
 
 1. User
-    - [x] CRUD
-    - [x] Homepage
+    - [![label](https://img.shields.io/badge/status-done-blue)](#) CRUD
+    - [![label](https://img.shields.io/badge/status-done-blue)](#) Homepage
     - [ ] Personal Data Sheet CRUD
         - Viewing [![label](https://img.shields.io/badge/status-in--progress-orange)](#)
         - Personal Information [![label](https://img.shields.io/badge/status-complete-green)](#)
@@ -16,11 +16,12 @@
     - [ ] Generate Certificate/ID
 
 2. Admin
-    - [x] CRUD
     - [x] Homepage
     - [ ] Dashboard(for managing user)
         - CRUD [![label](https://img.shields.io/badge/status-in--progress-orange)](#)
     - [ ] Generate Certificate/ID
+    - [ ] Print Record
+    - [ ] Assign Position
     - [x] Activity Log
 
 <!-- USE THIS AS LABEL
