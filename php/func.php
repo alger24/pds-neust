@@ -50,13 +50,36 @@ function check_id($conn, $uid, $role = "") {
     }
 }
 
-function insertActivity($conn, $str=""){
-    $sql = "INSERT INTO activity_log (act_time, act_text) VALUES ";
-    $sql .= "(NOW(), :act_text)";
-    $act = $conn->prepare($sql);
-    $act->bindValue(':act_text', $str)->execute();
-}
 
+// User Registration
+function userRegister($conn, $arr1=[], $tblname, $uid)
+{
+  if(empty($arr1)){
+    exit();
+  }
+
+  try {
+    foreach ($arr1 as $key => $value) {
+      $columns[] = "{$key}";
+      $fields[] = ":{$key}";
+    }
+
+    $sql = "INSERT INTO $tblname ";
+    $sql .= "(user_id, " . implode(", ", $columns) . ")";
+    $sql .= " VALUES (:user_id, " . implode(", ", $fields) . ")";
+    
+    // echo $sql;
+    $stmt = $conn->prepare($sql);
+    foreach ($arr1 as $key2 => $value2) {
+        $stmt->bindValue(":".$key2, $value2);
+    }
+    $stmt->bindValue(':user_id', $uid);
+    
+    $stmt->execute();
+  } catch (PDOException $e) {
+    echo "<br>" . $e->getMessage();
+  }
+}
 
 // function clean_data($data)
 // {
