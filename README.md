@@ -5,12 +5,12 @@
     - [x] Homepage
     - [ ] Personal Data Sheet CRUD
         - Viewing [![label](https://img.shields.io/badge/status-in--progress-orange)](#)
-        - Personal Information [![label](https://img.shields.io/badge/status-50%25%20done-blue)](#)
-        - Family Bacground [![label](https://img.shields.io/badge/status-halted-red)](#)
-        - Educational Background [![label](https://img.shields.io/badge/status-halted-red)](#)
-        - Civil Service Eligibility [![label](https://img.shields.io/badge/status-halted-red)](#)
-        - Work Experience [![label](https://img.shields.io/badge/status-halted-red)](#)
-        - Voluntary Work [![label](https://img.shields.io/badge/status-halted-red)](#)
+        - Personal Information [![label](https://img.shields.io/badge/status-complete-green)](#)
+        - Family Bacground [![label](https://img.shields.io/badge/status-complete-green)](#)
+        - Educational Background [![label](https://img.shields.io/badge/status-complete-green)](#)
+        - Civil Service Eligibility [![label](https://img.shields.io/badge/status-complete-green)](#)
+        - Work Experience [![label](https://img.shields.io/badge/status-complete-green)](#)
+        - Voluntary Work [![label](https://img.shields.io/badge/status-in--progress-orange)](#)
         - L&D [![label](https://img.shields.io/badge/status-halted-red)](#)
         - Other Information [![label](https://img.shields.io/badge/status-halted-red)](#)
     - [ ] Generate Certificate/ID
@@ -27,4 +27,5 @@
 [![label](https://img.shields.io/badge/status-done-blue)](#)
 [![label](https://img.shields.io/badge/status-halted-red)](#)
 [![label](https://img.shields.io/badge/status-in--progress-orange)](#)
+[![label](https://img.shields.io/badge/status-complete-green)](#)
  -->
