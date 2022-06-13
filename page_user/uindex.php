@@ -1,16 +1,13 @@
 <?php
-require '../php/func.php';
-require '../php/conn.php';
-require 'udry.php';
-session_start();
+require 'uconfig.php';
 
-$user_id = $_SESSION['user_id'];
-check_id(1, $user_id, $conn);
+$uid = $_SESSION['user_id'];
+check_id($conn, $uid, "user");
 
 get_urlmessage();
 
 echo "<h1>HOME</h1>
-        $user_id<br>";
+        $uid<br>";
 _userheader("Home");
 ?>
 
