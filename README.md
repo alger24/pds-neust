@@ -16,13 +16,13 @@
     - [ ] Generate Certificate/ID
 
 2. Admin
-    - [x] Homepage
+    - [![label](https://img.shields.io/badge/status-done-blue)](#) Homepage
     - [ ] Dashboard(for managing user)
         - CRUD [![label](https://img.shields.io/badge/status-in--progress-orange)](#)
     - [ ] Generate Certificate/ID
     - [ ] Print Record
     - [ ] Assign Position
-    - [x] Activity Log
+    - [![label](https://img.shields.io/badge/status-done-blue)](#) Activity Log
 
 <!-- USE THIS AS LABEL
 [![label](https://img.shields.io/badge/status-done-blue)](#)
