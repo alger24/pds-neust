@@ -37,8 +37,8 @@ _userheader("Voluntary Work View");
                         <td>" . $rows['volu_user_to'] . "</td>
                         <td>" . $rows['volu_user_hr'] . "</td>
                         <td>" . $rows['volu_user_posi'] . "</td>
-                        <td><a href='work.php?page_option=2&volu_id=" . $rows['volu_id'] . "'>Edit</a><td>
-                        <td><a href='work.php?page_option=3&volu_id=" . $rows['volu_id'] . "'>Delete</a><td>
+                        <td><a href='volu.php?page_option=2&volu_id=" . $rows['volu_id'] . "'>Edit</a><td>
+                        <td><a href='volu.php?page_option=3&volu_id=" . $rows['volu_id'] . "'>Delete</a><td>
                         </tr>
                         ";
                     }
@@ -46,7 +46,7 @@ _userheader("Voluntary Work View");
                 ?>
             </tbody>
             <tfoot>
-                <td><?= "<a href='work.php?page_option=1'>Add</a>" ?></td>
+                <td><?= "<a href='volu.php?page_option=1'>Add</a>" ?></td>
             </tfoot>
         </table>
     </fieldset>

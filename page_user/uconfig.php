@@ -388,7 +388,7 @@ if (isset($_GET['deletevolu-btn'])) {
   echo "Run successful";
 }
 
-// LND
+// LEARNING & DEVELOPMENT
 if (isset($_GET['addlnd-btn'])) {
   $lnd = array_filter($_GET['ulnd']);
   userInsert($conn, "user_lnd_tbl", $uid, $lnd, "lnd_id", "lnd");

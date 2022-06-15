@@ -24,7 +24,9 @@ _userheader("Test");
         $arr4 = $stmt4->fetch(PDO::FETCH_ASSOC);
     ?>
     <fieldset disabled="disabled">
-        <span>I. Personal information <a href="uedit1.php" target="_blank" rel="noopener noreferrer">Manage</a></span>
+        <a href="uedit1.php" target="_blank" rel="noopener noreferrer">Manage</a>
+        <br>
+        <span>I. Personal information</span>
         <br><br>
         <label for="user_name">2. Surname</label>
         <input type="text" name="user_name" id="user_name" value="<?= (isset($arr1['psl_user_sname'])) ? $arr1['psl_user_sname'] : '' ?>">
@@ -115,7 +117,8 @@ _userheader("Test");
         $getchild = userSelect($conn, "user_child_tbl", $uid, null, null);
     ?>
     <fieldset disabled="disabled">
-        <span>II. Family background <a href="uedit2.php" target="_blank" rel="noopener noreferrer">Manage</a></span>
+        <a href="uedit2.php" target="_blank" rel="noopener noreferrer">Manage</a>
+        <span>II. Family background</span>
         <br><br>
         <label for="spous_surname">22. Spouse's Surname </label>
         <input type="text" name="spous_surname" id="spous_surname" value="<?= (isset($arr5['fmly_spous_sname'])) ?  $arr5['fmly_spous_sname'] : '' ?>">
@@ -264,7 +267,7 @@ _userheader("Test");
         </table>
     </fieldset>
 
-    
+    <!-- Civil Service -->
     <?php
         $getcivil = userSelect($conn, "user_civil_tbl", $uid, null, null)
     ?>
@@ -303,6 +306,7 @@ _userheader("Test");
         </table>
     </fieldset>
 
+    <!-- Work Experience -->
     <?php
         $getwork = userSelect($conn, "user_work_tbl", $uid, null, null)
     ?>
@@ -351,12 +355,15 @@ _userheader("Test");
         </table>
     </fieldset>
 
+    <!-- Voluntary Work -->
     <?php
         $getvolu = userSelect($conn, "user_volu_tbl", $uid, null, null)
     ?>
     <fieldset disabled="disabled">
         <span>VI. VOLUNTARY WORK OR INVOLVEMETN IN CIVIC/
-            NON-GOVERNMENT/PEOPLE/VOLUNTARY ORGANIZATIONS <a href="volu-view.php" target="_blank" rel="noopener noreferrer">Manage</a> </span>
+            NON-GOVERNMENT/PEOPLE/VOLUNTARY ORGANIZATIONS 
+            <a href="volu-view.php" target="_blank" rel="noopener noreferrer">Manage</a> 
+        </span>
         <table class="zui-table" width="100%">
             <thead>
                 <tr>
@@ -389,12 +396,12 @@ _userheader("Test");
         </table>
     </fieldset>
 
-    <!-- LND -->
+    <!-- Learning and Development -->
     <?php
         $getlnd = userSelect($conn, "user_lnd_tbl", $uid, null, null)
     ?>
     <fieldset disabled="disabled">
-        <span> VII. LEARNING AND DEVELOPMENT(L&D)INTERVENTIONS/TRAINING PROGRAMS ATTENDED <a href="uedit4.php?user_id=<?= $arr1['user_id'] ?>" target="_blank" rel="noopener noreferrer">Manage</a><br>
+        <span> VII. LEARNING AND DEVELOPMENT(L&D)INTERVENTIONS/TRAINING PROGRAMS ATTENDED <a href="lnd-view.php" target="_blank" rel="noopener noreferrer">Manage</a><br>
             (Start from the most L&D/training program and include only the relevant L& D/training takrn for the last five(5)years for Division Chief/Executive/Managerial position) <a href="uedit7.php?user_id=<?= $arr1['user_id'] ?>" target="_blank" rel="noopener noreferrer"></a> </span>
         <table class="zui-table" width="100%">
             <thead>
@@ -413,9 +420,9 @@ _userheader("Test");
             </thead>
             <tbody>
                 <?php
-                    if ($getlnd) {
-                        while ($rows = $getlnd->fetch(PDO::FETCH_ASSOC)) {
-                            echo "
+                if ($getlnd) {
+                    while ($rows = $getlnd->fetch(PDO::FETCH_ASSOC)) {
+                        echo "
                             <tr>
                             <td>" . $rows['lnd_user_name'] . "</td>
                             <td>" . $rows['lnd_user_from'] . "</td>
@@ -425,9 +432,9 @@ _userheader("Test");
                             <td>" . $rows['lnd_user_spon'] . "</td>
                             </tr>
                             ";
-                        }
                     }
-                    /*
+                }
+                /*
                     lnd_id
                     lnd_user_name VARCHAR(24) NULL,
                     lnd_user_from DATE NULL,
@@ -441,11 +448,12 @@ _userheader("Test");
         </table>
     </fieldset>
 
+    <!-- Other Information -->
     <?php
-        $getother1 = userSelect($conn, "user_other1_tbl", $uid, null, null)
+    $getother1 = userSelect($conn, "user_other1_tbl", $uid, null, null)
     ?>
     <fieldset disabled="disabled">
-        <span>VIII. OTHER INFORMATION <a href="uedit8.php?user_id=<?= $arr1['user_id'] ?>" target="_blank" rel="noopener noreferrer">Manage</a> </span>
+        <span>VIII. OTHER INFORMATION <a href="other1-view.php" target="_blank" rel="noopener noreferrer">Manage</a> </span>
         <table class="zui-table" width="100%">
             <thead>
                 <tr>
@@ -458,17 +466,17 @@ _userheader("Test");
             </thead>
             <tbody>
                 <?php
-                    if ($getlnd) {
-                        while ($rows = $getlnd->fetch(PDO::FETCH_ASSOC)) {
-                            echo "
+                if ($getother1) {
+                    while ($rows = $getother1->fetch(PDO::FETCH_ASSOC)) {
+                        echo "
                             <tr>
-                            <td>" . $rows['other_'] . "</td>
-                            <td>" . $rows['other_'] . "</td>
-                            <td>" . $rows['other_'] . "</td>
+                            <td>" . $rows['other1_user_skills'] . "</td>
+                            <td>" . $rows['other1_user_recog'] . "</td>
+                            <td>" . $rows['other1_user_member'] . "</td>
                             </tr>
                             ";
-                        }
                     }
+                }
                     /*
                     other1_id VARCHAR(11) NULL UNIQUE,
                     other1_user_skills VARCHAR(24) NULL,
@@ -480,13 +488,11 @@ _userheader("Test");
         </table>
     </fieldset>
 
+    <!-- Questions -->
     <?php
-        $getother2 = userSelect($conn, "user_other2_tbl", $uid, null, null)
-        /*
-        other2_34_ayn VARCHAR(24) NULL,
-        other2_34_byn VARCHAR(24) NULL,
-        other2_34_txt VARCHAR(24) NULL,
-        
+        $getother2 = userSelect($conn, "user_other2_tbl", $uid, null, null);
+        $other2 = $getother2->fetch(PDO::FETCH_ASSOC);
+    /*
         other2_35_ayn VARCHAR(24) NULL,
         other2_35_atxt VARCHAR(24) NULL,
         other2_35_byn VARCHAR(24) NULL,
@@ -517,66 +523,121 @@ _userheader("Test");
     ?>
     <fieldset disabled="disabled">
         <a href="#" target="_blank" rel="noopener noreferrer">Manage</a>
+        <br>
         <span>
             34. Are you related by consaguinity or affinity to the appointing or recommending authority, or to chief of bureau or office or to the person who has immediate supervision over you in the Bureau or Department where you will be apppointed,
-            <br>
-            a. within the third degree?
-            <br>
-            b. within the fourth degree (for Local Government Unit - Career Employees)?
-            <br>
         </span>
-        <input type="radio" name="other_3rd_deg" id="other_3rd_deg_y" value="yes">
-        <label for="other_3rd_deg_y">Yes</label>
-        <input type="radio" name="other_3rd_deg" id="other_3rd_deg_n" value="no">
-        <label for="other_3rd_deg_n">No</label>
         <br>
-        <input type="radio" name="other_4th_deg" id="other_4th_deg_y" value="yes">
-        <label for="other_4th_deg_y">Yes</label>
-        <input type="radio" name="other_4th_deg" id="other_4th_deg_n" value="no">
-        <label for="other_4th_deg_n">No</label>
+        a. within the third degree?
+        <input type="radio" name="other2_34_ayn" id="other2_34_ayn" <?= $other2['other2_34_ayn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_34_ayn">Yes</label>
+        <input type="radio" name="other2_34_ayn" id="other2_34_ayn" <?= $other2['other2_34_ayn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_34_ayn">No</label>
         <br>
-        <label for="other_degre_txt">If yes, give details:</label>
-        <input type="text" name="other_degre_txt" id="other_degre_txt" value="<?= (isset($arr1['other_degre_txt'])) ?  $arr1['other_degre_txt'] : '' ?>">
+        b. within the fourth degree (for Local Government Unit - Career Employees)?
+        <input type="radio" name="other2_34_byn" id="other2_34_byn" <?= $other2['other2_34_byn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_34_byn">Yes</label>
+        <input type="radio" name="other2_34_byn" id="other2_34_byn" <?= $other2['other2_34_byn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_34_byn">No</label>
+        <label for="other2_34_txt">If yes, give details:</label>
+        <input type="text" name="other2_34_txt" id="other2_34_txt" value="<?= (isset($other2['other2_34_txt'])) ?  $other2['other2_34_txt'] : '' ?>">
         <br><br>
         <span>
             35. a. Have you ever been found guilty of any administrative offense?
         </span>
-        <input type="radio" name="other_guilty" id="other_guilty_y" value="yes">
-        <label for="other_guilty_y">Yes</label>
-        <input type="radio" name="other_guilty" id="other_guilty_n" value="no">
-        <label for="other_guilty_n">No</label>
-        <label for="other_guilty_text">If yes, give details:</label>
-        <input type="text" name="other_guilty_text" id="other_guilty_text" value="<?= (isset($arr1['other_guilty_txt'])) ?  $arr1['other_guilty_txt'] : '' ?>">
+        <input type="radio" name="other2_35_ayn" id="other2_35_ayn" <?= $other2['other2_35_ayn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_35_ayn">Yes</label>
+        <input type="radio" name="other2_35_ayn" id="other2_35_ayn" <?= $other2['other2_35_ayn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_35_ayn">No</label>
+        <label for="other2_35_atxt">If yes, give details:</label>
+        <input type="text" name="other2_35_atxt" id="other2_35_atxt" value="<?= (isset($other2['other2_35_atxt'])) ?  $other2['other2_35_atxt'] : '' ?>">
         <br>
         b. Have you been criminally charged before any court?
-        <input type="radio" name="other_charged" id="other_charged_y" value="yes">
-        <label for="other_charged_y">Yes</label>
-        <input type="radio" name="other_charged" id="other_charged_n" value="no">
-        <label for="other_charged_n">No</label>
+        <input type="radio" name="other2_35_byn" id="other2_35_byn" <?= $other2['other2_35_byn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_35_byn">Yes</label>
+        <input type="radio" name="other2_35_byn" id="other2_35_byn" <?= $other2['other2_35_byn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_35_byn">No</label>
         <span>If yes, give details:</span>
-        <label for="other_charged_date">Date Filed:</label>
-        <input type="date" name="other_charged_date" id="other_charged_date" value="<?= (isset($arr1['other_charged_date'])) ?  $arr1['other_charged_date'] : '' ?>">
-        <label for="other_charged_stts">Status of Case/s:</label>
-        <input type="text" name="other_charged_stts" id="other_charged_stts" value="<?= (isset($arr1['other_charged_stts'])) ?  $arr1['other_charged_stts'] : '' ?>">
+        <label for="other2_35_bdate">Date Filed:</label>
+        <input type="date" name="other2_35_bdate" id="other2_35_bdate" value="<?= (isset($other2['other2_35_bdate'])) ?  $other2['other2_35_bdate'] : '' ?>">
+        <label for="other2_35_btxt">Status of Case/s:</label>
+        <input type="text" name="other2_35_btxt" id="other2_35_btxt" value="<?= (isset($other2['other2_35_btxt'])) ?  $other2['other2_35_btxt'] : '' ?>">
         <br><br>
         <span>36. Have you ever been convicted of any crime or violation of any law, decree, ordinance or regulation by any court or tribunal?</span>
+        <input type="radio" name="other2_36_yn" id="other2_36_yn" <?= $other2['other2_36_yn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_36_yn">Yes</label>
+        <input type="radio" name="other2_36_yn" id="other2_36_yn" <?= $other2['other2_36_yn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_36_yn">No</label>
+        <label for="other2_36_txt">If yes, give details:</label>
+        <input type="text" name="other2_36_txt" id="other2_36_txt" value="<?= (isset($other2['other2_36_txt'])) ?  $other2['other2_36_txt'] : '' ?>">
+        <br><br>
         <span>37. Have you ever been separated from the service in any of the following modes: resignation,retirement, dropped from the rolls, dismissal, termination, end of term, finished contract orphased out (abolition) in the public or private sector?</span>
+        <input type="radio" name="other2_37_yn" id="other2_37_yn" <?= $other2['other2_37_yn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_37_yn">Yes</label>
+        <input type="radio" name="other2_37_yn" id="other2_37_yn" <?= $other2['other2_37_yn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_37_yn">No</label>
+        <label for="other2_37_txt">If yes, give details:</label>
+        <input type="text" name="other2_37_txt" id="other2_37_txt" value="<?= (isset($other2['other2_37_txt'])) ?  $other2['other2_37_txt'] : '' ?>">
+        <br><br>
         <span>38. a. Have you ever been a candidate in a national or local election held within the last year(except Barangay election)?</span>
+        <input type="radio" name="other2_38_ayn" id="other2_38_ayn" <?= $other2['other2_38_ayn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_38_ayn">Yes</label>
+        <input type="radio" name="other2_38_ayn" id="other2_38_ayn" <?= $other2['other2_38_ayn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_38_ayn">No</label>
+        <label for="other2_38_atxt">If yes, give details:</label>
+        <input type="text" name="other2_38_atxt" id="other2_38_atxt" value="<?= (isset($other2['other2_38_atxt'])) ?  $other2['other2_38_atxt'] : '' ?>">
+        <br><br>
         <span>b. Have you resigned from the government service during the three (3)-month period beforethe last election to promote/actively campaign for a national or local candidate?</span>
+        <input type="radio" name="other2_38_byn" id="other2_38_byn" <?= $other2['other2_38_byn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_38_byn">Yes</label>
+        <input type="radio" name="other2_38_byn" id="other2_38_byn" <?= $other2['other2_38_byn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_38_byn">No</label>
+        <label for="other2_38_btxt">If yes, give details:</label>
+        <input type="text" name="other2_38_btxt" id="other2_38_btxt" value="<?= (isset($other2['other2_38_btxt'])) ?  $other2['other2_38_btxt'] : '' ?>">
+        <br><br>
         <span>39. Have you acquired the status of an immigrant or permanent resident of another country?</span>
+        <input type="radio" name="other2_39_ayn" id="other2_39_ayn" <?= $other2['other2_39_yn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_39_ayn">Yes</label>
+        <input type="radio" name="other2_39_ayn" id="other2_39_ayn" <?= $other2['other2_39_yn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_39_ayn">No</label>
+        <label for="other2_39_txt">If yes, give details:</label>
+        <input type="text" name="other2_39_txt" id="other2_39_txt" value="<?= (isset($other2['other2_39_txt'])) ?  $other2['other2_39_txt'] : '' ?>">
+        <br><br>
         <span>40. 40. Pursuant to: (a) Indigenous People's Act (RA 8371); (b) Magna Carta for Disabled Persons(RA 7277); and (c) Solo Parents Welfare Act of 2000 (RA 8972), please answer the following items:</span>
+        <br>
         <span>a. Are you a member of any indigenous group?</span>
+        <input type="radio" name="other2_40_ayn" id="other2_40_ayn" <?= $other2['other2_40_ayn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_40_ayn">Yes</label>
+        <input type="radio" name="other2_40_ayn" id="other2_40_ayn" <?= $other2['other2_40_ayn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_40_ayn">No</label>
+        <label for="other2_40_atxt">If yes, give details:</label>
+        <input type="text" name="other2_40_atxt" id="other2_40_atxt" value="<?= (isset($other2['other2_40_atxt'])) ?  $other2['other2_40_atxt'] : '' ?>">
+        <br>
         <span>b. Are you a person with disability?</span>
+        <input type="radio" name="other2_40_byn" id="other2_40_byn" <?= $other2['other2_40_byn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_40_byn">Yes</label>
+        <input type="radio" name="other2_40_byn" id="other2_40_byn" <?= $other2['other2_40_byn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_40_byn">No</label>
+        <label for="other2_40_btxt">If yes, give details:</label>
+        <input type="text" name="other2_40_btxt" id="other2_40_btxt" value="<?= (isset($other2['other2_40_btxt'])) ?  $other2['other2_40_btxt'] : '' ?>">
+        <br>
         <span>c. Are you a solo parent?</span>
+        <input type="radio" name="other2_40_cyn" id="other2_40_cyn" <?= $other2['other2_40_cyn'] == "yes" ? "checked" : "" ?> value="yes">
+        <label for="other2_40_cyn">Yes</label>
+        <input type="radio" name="other2_40_cyn" id="other2_40_cyn" <?= $other2['other2_40_cyn'] == "no" ? "checked" : "" ?> value="no">
+        <label for="other2_40_cyn">No</label>
+        <label for="other2_40_ctxt">If yes, give details:</label>
+        <input type="text" name="other2_40_ctxt" id="other2_40_ctxt" value="<?= (isset($other2['other2_40_ctxt'])) ?  $other2['other2_40_ctxt'] : '' ?>">
         <br><br>
 
     </fieldset>
 
+
     <?php
-        $getref = userSelect($conn, "user_ref_tbl", $uid, null, null)
+        $otherref = userSelect($conn, "user_otherref_tbl", $uid, null, null);
     ?>
     <fieldset disabled="disabled">
-        <a href="uedit10.php?user_id=<?= $arr1['user_id'] ?>" target="_blank" rel="noopener noreferrer">Manage</a>
+        <a href="" target="_blank" rel="noopener noreferrer">Manage</a>
         41. REFERENCES (Person not related by consanguinity or affinity to applicant /appointee)
         <table class="zui-table" width="100%">
             <thead>
@@ -588,24 +649,31 @@ _userheader("Test");
             </thead>
             <tbody>
                 <?php
-                    if ($getref) {
-                        while ($rows = $getref->fetch(PDO::FETCH_ASSOC)) {
-                            echo "
+                if ($otherref) {
+                    while ($rows = $otherref->fetch(PDO::FETCH_ASSOC)) {
+                        echo "
                             <tr>
-                            <td>" . $rows['other3_'] . "</td>
-                            <td>" . $rows['other3_'] . "</td>
-                            <td>" . $rows['other3_'] . "</td>
+                            <td>" . $rows['otherref_name'] . "</td>
+                            <td>" . $rows['otherref_address'] . "</td>
+                            <td>" . $rows['otherref_telno'] . "</td>
                             </tr>
                             ";
-                        }
                     }
+                }
+                /*
+                    otherref_id VARCHAR(11) UNIQUE NULL,
+                    otherref_name VARCHAR(24) NULL,
+                    otherref_address VARCHAR(24) NULL,
+                    otherref_telno VARCHAR(24) NULL,
+                */
                 ?>
             </tbody>
         </table>
 
         <?php
-            $getother3 = userSelect($conn, "user_other3_tbl", $uid, null, null)
-        ?>    
+        $getother3 = userSelect($conn, "user_other3_tbl", $uid, null, null)
+        ?>
+
         <span>
             42. I declare under oath that I have personally accomplished this Personal Data Sheet which is a true, correct and
             complete statement pursuant to the provisions of pertinent laws, rules and regulations of the Republic of the
@@ -613,10 +681,6 @@ _userheader("Test");
             herein. I agree that any misrepresentation made in this document and its attachments shall cause the
             filing of administrative/criminal case/s against me.
         </span>
-
-        <br>
-        <img src="" alt="prf_user_img/passport">
-        <br>
 
         <span>
             Government Issued ID (i.e.Passport, GSIS, SSS, PRC, Driver's License, etc.)
@@ -633,6 +697,21 @@ _userheader("Test");
         <input type="text" name="prf_issuance" id="prf_issuance" value="<?= (isset($arr1['prf_issuance'])) ?  $arr1['prf_issuance'] : '' ?>">
 
         <br>
+            <?php
+                $getimg = userSelect($conn, "user_otherimg_tbl", $uid, null, null);
+                $otherimg = $getimg->fetch(PDO::FETCH_ASSOC);
+                if($otherimg['otherimg_id_1'] != null) {
+
+                } else {
+                    echo "
+                        
+                        <a href='' target='_blank' rel='noopener noreferrer'></a> 
+                    ";
+                }
+            ?>
+        <br>
+                <a href='' target='_blank' rel='noopener noreferrer'></a>
+        <br>
         <img src="" alt="prf_signiture_img/digital" name>
         <span>Signiture(Sign on the Box)</span>
         <br>
@@ -643,7 +722,8 @@ _userheader("Test");
         <img src="" alt="prf_thumbmark_img">
         <span>Right Thumbmark</span>
         <br>
-        SUBSCRIBED AND SWORN to before me this <input type="text" name="prf_affiant_name" id="prf_affiant_name" value="<?= (isset($arr1['prf_affiant_name'])) ?  $arr1['prf_affiant_name'] : '' ?>"> , affiant exhibiting his/her validly issued government ID as indicated above.
+        SUBSCRIBED AND SWORN to before me this 
+        <input type="text" name="prf_affiant_name" id="prf_affiant_name" value="<?= (isset($arr1['prf_affiant_name'])) ?  $arr1['prf_affiant_name'] : '' ?>"> , affiant exhibiting his/her validly issued government ID as indicated above.
         <br>
         <img src="" alt="prf_signiture_img_affi">
         <span>Person Administrating Oath</span>

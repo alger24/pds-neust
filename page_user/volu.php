@@ -8,17 +8,12 @@ _userheader("volu Experience Page");
 
 <br><a href="pds-view.php">Go back</a>
 <form action='uconfig.php' method='get'>
-
-
-    <fieldset>
-
-    </fieldset>
     <?php
     $option = $_GET['page_option'];
     switch ($option) {
         case 1: // Add
             echo "
-            <h1>Add Voluntary Work Experience</h1>
+            <h1>Add Voluntary Work</h1>
             <fieldset>
                 <table>
                     <thead>
@@ -88,7 +83,7 @@ _userheader("volu Experience Page");
             $_SESSION['volu_id'] = $id2;
 
             echo "
-            <h1>Delete Voluntary Work Experience?</h1>
+            <h1>Delete Voluntary Work?</h1>
             <button type='submit' name='deletevolu-btn'>Yes</button>
             <a href='pds-view.php'>No</a> 
             ";

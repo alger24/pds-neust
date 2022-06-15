@@ -4,20 +4,14 @@ require 'uconfig.php';
 $uid = $_SESSION['user_id'];
 check_id($conn, $uid, "user");
 
-$data1 = userSelect($conn, "user_psl_tbl", $uid);
-foreach($data1 as $rows) {
-    $arr1 = $rows;
-}
-
-$data2 = userSelect($conn, "user_card_tbl", $uid);
-foreach($data2 as $rows) {
-    $arr2 = $rows;
-}
-
-$data3 = userSelect($conn, "user_main_tbl", $uid);
-foreach($data3 as $rows) {
-    $arr3 = $rows;
-}
+$data1 = userSelect($conn, "user_psl_tbl", $uid, null, null);
+$arr1 = $data1->fetch(PDO::FETCH_ASSOC);
+$data2 = userSelect($conn, "user_card_tbl", $uid, null, null);
+$arr2 = $data2->fetch(PDO::FETCH_ASSOC);
+$data3 = userSelect($conn, "user_addr_tbl", $uid, null, null);
+$arr3 = $data3->fetch(PDO::FETCH_ASSOC);
+$data4 = userSelect($conn, "user_main_tbl", $uid, null, null);
+$arr4 = $data4->fetch(PDO::FETCH_ASSOC);
 
 echo "<h1>Edit Personal Information</h1>
         $uid<br>";
@@ -94,26 +88,26 @@ _userheader("Test");
         <br><br>
         <span>Residential Address</br></span>
         <label for="user_hbl">House/Block/Lot No. </label>
-        <input type="text" name="addr[addr_user_hbl]" id="user_hbl" value="<?= (isset($arr1['addr_user_hbl'])) ?  $arr1['addr_user_hbl'] : '' ?>">
+        <input type="text" name="addr[addr_user_hbl]" id="user_hbl" value="<?= (isset($arr3['addr_user_hbl'])) ?  $arr3['addr_user_hbl'] : '' ?>">
         <label for="user_strt">Street </label>
-        <input type="text" name="addr[addr_user_strt]" id="user_strt" value="<?= (isset($arr1['addr_user_strt'])) ?  $arr1['addr_user_strt'] : '' ?>">
+        <input type="text" name="addr[addr_user_strt]" id="user_strt" value="<?= (isset($arr3['addr_user_strt'])) ?  $arr3['addr_user_strt'] : '' ?>">
         <label for="user_subdiv">Subdivision/Village </label>
-        <input type="text" name="addr[addr_user_subdiv]" id="user_subdiv" value="<?= (isset($arr1['addr_user_subdiv'])) ?  $arr1['addr_user_subdiv'] : '' ?>">
+        <input type="text" name="addr[addr_user_subdiv]" id="user_subdiv" value="<?= (isset($arr3['addr_user_subdiv'])) ?  $arr3['addr_user_subdiv'] : '' ?>">
         <label for="user_brgy">Barangay </label>
-        <input type="text" name="addr[addr_user_brgy]" id="user_brgy" value="<?= (isset($arr1['addr_user_brgy'])) ?  $arr1['addr_user_brgy'] : '' ?>">
+        <input type="text" name="addr[addr_user_brgy]" id="user_brgy" value="<?= (isset($arr3['addr_user_brgy'])) ?  $arr3['addr_user_brgy'] : '' ?>">
         <label for="user_city">City/Municipality </label>
-        <input type="text" name="addr[addr_user_city]" id="user_city" value="<?= (isset($arr1['addr_user_city'])) ?  $arr1['addr_user_city'] : '' ?>">
+        <input type="text" name="addr[addr_user_city]" id="user_city" value="<?= (isset($arr3['addr_user_city'])) ?  $arr3['addr_user_city'] : '' ?>">
         <label for="user_prov">Province </label>
-        <input type="text" name="addr[addr_user_prov]" id="user_prov" value="<?= (isset($arr1['addr_user_prov'])) ?  $arr1['addr_user_prov'] : '' ?>">
+        <input type="text" name="addr[addr_user_prov]" id="user_prov" value="<?= (isset($arr3['addr_user_prov'])) ?  $arr3['addr_user_prov'] : '' ?>">
         <label for="user_zip">Zip Code </label>
-        <input type="text" name="addr[addr_user_zip]" id="user_zip" value="<?= (isset($arr1['addr_user_zip'])) ?  $arr1['addr_user_zip'] : '' ?>">
+        <input type="text" name="addr[addr_user_zip]" id="user_zip" value="<?= (isset($arr3['addr_user_zip'])) ?  $arr3['addr_user_zip'] : '' ?>">
         <br><br>
         <label for="user_tel">19. Telephone no. </label>
-        <input type="text" name="psl[psl_user_tel]" id="user_tel" value="<?= (isset($arr1['psl_user_tel'])) ?  $arr1['psl_user_tel'] : '' ?>">
+        <input type="text" name="psl[psl_user_tel]" id="user_tel" value="<?= (isset($arr3['psl_user_tel'])) ?  $arr3['psl_user_tel'] : '' ?>">
         <label for="user_mobile">20. Mobile no. </label>
-        <input type="text" name="psl[psl_user_mobile]" id="user_mobile" value="<?= (isset($arr1['psl_user_mobile'])) ?  $arr1['psl_user_mobile'] : '' ?>">
+        <input type="text" name="psl[psl_user_mobile]" id="user_mobile" value="<?= (isset($arr3['psl_user_mobile'])) ?  $arr3['psl_user_mobile'] : '' ?>">
         <label for="email">21. E-mail address (if any) </label>
-        <input type="text" name="main_user_email" id="email" value="<?= (isset($arr3['main_user_email'])) ?  $arr3['main_user_email'] : '' ?>">
+        <input type="text" name="main_user_email" id="email" value="<?= (isset($arr4['main_user_email'])) ?  $arr4['main_user_email'] : '' ?>">
         <button type="submit" name="uedit1-btn">Test</button>
     </fieldset>
 </form>
