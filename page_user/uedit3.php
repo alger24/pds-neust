@@ -31,28 +31,28 @@ _userheader("Test");
             </thead>
             <?php
             // Thissss is selects everything
-            $data1 = userSelect($conn, "user_elembg_tbl", $uid);
+            $data1 = userSelect($conn, "user_elembg_tbl", $uid, null, null);
             foreach ($data1 as $rows) {
                 $arr1 = $rows;
             }
-            $data2 = userSelect($conn, "user_secobg_tbl", $uid);
+            $data2 = userSelect($conn, "user_secobg_tbl", $uid, null, null);
             foreach ($data2 as $rows) {
                 $arr2 = $rows;
             }
-            $data3 = userSelect($conn, "user_vocabg_tbl", $uid);
+            $data3 = userSelect($conn, "user_vocabg_tbl", $uid, null, null);
             foreach ($data3 as $rows) {
                 $arr3 = $rows;
             }
-            $data4 = userSelect($conn, "user_collbg_tbl", $uid);
+            $data4 = userSelect($conn, "user_collbg_tbl", $uid, null, null);
             foreach ($data4 as $rows) {
                 $arr4 = $rows;
             }
-            $data5 = userSelect($conn, "user_gradbg_tbl", $uid);
+            $data5 = userSelect($conn, "user_gradbg_tbl", $uid, null, null);
             foreach ($data5 as $rows) {
                 $arr5 = $rows;
             }
 
-            // print_r(array_filter($arr1));
+
 
             ?>
             <tbody>

@@ -118,7 +118,7 @@ function userUpdate($conn, $tblname, $uid, $arr1 = [], $id2, $idname)
     $sql = "UPDATE $tblname SET ";
     $sql .= implode(", ", $pairs) . " WHERE user_id=:userid";
     // Uncomment if need checking
-    echo $sql;
+    // echo $sql;
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':userid', $uid);
     foreach ($arr1 as $key => $value) {
@@ -182,6 +182,9 @@ function insertActivity($conn, $str = "", $uid)
     echo "<br>" . $e->getMessage();
   }
 }
+
+
+
 
 
 // UPDATE PERSONAL INFORMATION 
@@ -458,11 +461,12 @@ if (isset($_GET['deleteother1-btn'])) {
 
 // OTHER2
 if (isset($_GET['editother2-btn'])) {
-  $other2 = $_GET['uother2'];
+  $other2 = array_filter($_GET['uother2']);
+
   userUpdate($conn, "user_other2_tbl", $uid, $other2, null, null);
 
-  // Creates a string for activity logging
-  insertActivity($conn, "updated their other questionaire answer's.", $uid);
+  // // Creates a string for activity logging
+  // insertActivity($conn, "updated their other questionaire answer's.", $uid);
 
   echo "Run successful";
 }
@@ -475,4 +479,83 @@ if (isset($_GET['editother3-btn'])) {
   insertActivity($conn, "updated their other card information.", $uid);
 
   echo "Run successful";
+}
+
+
+// OTHER IMAGE
+if (isset($_POST['upload-img'])) {
+  $img1 = $_FILES['otherimg_path_1'];
+  // $img2 = $_FILES['otherimg_path_2'];
+  
+
+  userUploadImg($conn, $uid, "otherimg_path_1", $img1);
+  // userUploadImg($conn, $uid, "user_otherimg_tbl", "otherimg_path_2", $img2);
+  // userUploadImg($conn, $uid, "user_otherimg_tbl", "otherimg_path_3", $img3);
+  // userUploadImg($conn, $uid, "user_otherimg_tbl", "otherimg_path_4", $img4);
+}
+
+function userUploadImg($conn, $uid, $colname, $file = []) {
+  if (empty($file)) {
+    return;
+  }
+
+  $fileName = $file['name'];
+  $fileTmpname = $file['tmp_name'];
+  $fileError = $file['error'];
+  $fileSize = $file['size'];
+  $fileExt = explode('.', $fileName);
+  $fileActualExt = strtolower(end($fileExt));
+  $allowed = ['jpg', 'jpeg', 'png'];
+
+  if (in_array($fileActualExt, $allowed)) {
+    if ($fileError === 0) {
+      if ($fileSize < 10000000) {
+        $fileNameNew = "img-" . bin2hex(random_bytes(5)) . "." . $fileActualExt;
+        $fileDestination = 'uploads/' . $fileNameNew;
+        move_uploaded_file($fileTmpname, $fileDestination);
+
+        try {
+          $sql = "UPDATE user_otherimg_tbl SET {$colname} = :{$colname} WHERE user_id = :user_id";
+          $stmt = $conn->prepare($sql);
+          $stmt->bindValue(':'.$colname, $fileDestination);
+          $stmt->bindValue(':user_id', $uid);
+          $stmt->execute();
+        } catch (PDOException $e) {
+          echo "<br>" . $e->getMessage();
+        }
+      }
+    }
+  } else {
+    echo "Error File isn't image";
+    return;
+  }
+  return;
+}
+
+if (isset($_GET['del-img'])) {
+  $del_num = $_GET['del-img'];
+  
+  $colimage = [
+    "1" => "otherimg_path_1", 
+    "2" => "otherimg_path_2",
+    "3" => "otherimg_path_3",
+    "4" => "otherimg_path_4"
+  ];
+
+  $colname = $colimage[$del_num];
+
+  $stmt = userSelect($conn, "user_otherimg_tbl", $uid, null, null);
+  $getImg = $stmt->fetch(PDO::FETCH_ASSOC);
+  $Imgpath = $getImg[$colname];
+  unlink($Imgpath);
+
+  try {
+    $sql = "UPDATE `user_otherimg_tbl` SET {$colname} = NULL WHERE user_id = :user_id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue('user_id', $uid);
+    // echo $sql;
+    $stmt->execute();
+  } catch (PDOException $e) {
+    echo "<br>" . $e->getMessage();
+  }
 }

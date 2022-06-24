@@ -522,7 +522,7 @@ _userheader("Test");
         */
     ?>
     <fieldset disabled="disabled">
-        <a href="#" target="_blank" rel="noopener noreferrer">Manage</a>
+        <a href="uedit4.php" target="_blank" rel="noopener noreferrer">Manage</a>
         <br>
         <span>
             34. Are you related by consaguinity or affinity to the appointing or recommending authority, or to chief of bureau or office or to the person who has immediate supervision over you in the Bureau or Department where you will be apppointed,
@@ -704,8 +704,7 @@ _userheader("Test");
 
                 } else {
                     echo "
-                        
-                        <a href='' target='_blank' rel='noopener noreferrer'></a> 
+                        <a href='img.php' target='_blank' rel='noopener noreferrer'>Upload Image</a> 
                     ";
                 }
             ?>
@@ -713,7 +712,7 @@ _userheader("Test");
                 <a href='' target='_blank' rel='noopener noreferrer'></a>
         <br>
         <img src="" alt="prf_signiture_img/digital" name>
-        <span>Signiture(Sign on the Box)</span>
+        <span>Signiture (Sign on the Box)</span>
         <br>
         <input type="date" name="prf_signiture_date" id="prf_signiture_date" value="<?= (isset($arr1['prf_signiture_date'])) ?  $arr1['prf_signiture_date'] : '' ?>">
         <span>Date accomplished</span>
