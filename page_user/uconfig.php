@@ -25,7 +25,7 @@ function userInsert($conn, $tblname, $uid, $arr1 = [], $idname, $idfor)
     return;
   }
 
-  // Add Child
+  // Add
   if (!empty($idname) && !empty($idfor)) {
     // Generate ID
     $id2 = $idfor . bin2hex(random_bytes(7));
